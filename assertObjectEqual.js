@@ -34,36 +34,34 @@ const eqArrays = function (array1, array2) {
   return recursiveFlag;
 }
 
-const eqObjects = function (object1, object2) {
-  if(object2.length !== object1.length){
-    return false;
+const eqObjects = function(object1, object2) {
+  let recursiveFlag = true;
+  if (Object.keys(object1).length !== Object.keys(object2).length) {
+    //console.log('THE OBJECTS WERE DIFFERENT LENGTHS');
+    recursiveFlag = false;
   }
-  for (const item in object1){
-    if(Array.isArray(object1[item])){
-      if(!(item in object2)|| !( Array.isArray(object2[item]) ) || !(eqArrays(object1[item], object2[item]))){
-        return false;
-      }
-    } else{
-      if(!(item in object2) || (object1[item] !== object2[item])){
-        return false;
+  if (typeof object1 === typeof object2) {
+    for (let item in object1) {
+      if (typeof object1[item] === 'object' && !Array.isArray(object1[item])) {
+        recursiveFlag = eqObjects(object1[item], object2[item]);
+      } else if (Array.isArray(object1[item]) && Array.isArray(object2[item])) {
+        if (!eqArrays(object1[item], object2[item])) {
+          //console.log('THE ARRAYS DID NOT MATCH');
+          recursiveFlag = false;
+        }
+      } else {
+        if (!(object1[item] === object2[item])) {
+          //console.log('THE ITEMS DID NOT MATCH');
+          recursiveFlag = false;
+        }
       }
     }
+  } else {
+    //console.log('THE ITEM TYPES DID NOT MATCH');
+    recursiveFlag = false;
   }
-
-
-  for (const item in object2){
-    if(Array.isArray(object2[item])){
-      if(!(item in object1)|| !( Array.isArray(object1[item]) ) || !(eqArrays(object1[item], object2[item]))){
-        return false;
-      }
-    } else{
-      if(!(item in object1) || (object1[item] !== object2[item])){
-        return false;
-      }
-    }
-  }
-  return true;
-}
+  return recursiveFlag;
+};
 
 
 
