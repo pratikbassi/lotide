@@ -20,21 +20,30 @@ const letterPositions = function (sentence) {
 
 
 const eqArrays = function (array1, array2) {
-
-  let i = 0;
-
+  let recursiveFlag = true;
   if(array1.length !== array2.length){
-    return false;
+    //console.log('LENGTHS DID NOT MATCH');
+    recursiveFlag = false;
   }
 
-  while(i < array1.length){
-    if (array1[i] !== array2[i]){
-      return false;
+  for(let i = 0; i < array1.length; i++){
+    if(Array.isArray(array1[i]) && Array.isArray(array2[i])){
+      //console.log('RECURSION REACHED');
+      recursiveFlag = eqArrays(array1[i], array2[i]);
     }
-    i++;
+    else if ((!Array.isArray(array1[i]) && Array.isArray(array2[i])) || (Array.isArray(array1[i]) && !Array.isArray(array2[i]))){
+      //console.log('TYPES DID NOT MATCH');
+      recursiveFlag = false;
+    } else {
+      if(array1[i] !== array2[i]){
+        //console.log('ITEMS DID NOT MATCH');
+        recursiveFlag = false;
+      }
+    }
   }
+  
 
-  return true;
+  return recursiveFlag;
 }
 
 const assertArraysEqual = function (value1, value2) {
