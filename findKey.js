@@ -1,10 +1,12 @@
-exports.findKey = function (object, callBack) {
+const findKey = function (object, callBack) {
   for(let item in object){
     if(callBack(object[item])){
       return item;
     }
   }
 }
+
+module.exports = findKey;
 
 /// TESTING BELOW
 

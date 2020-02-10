@@ -1,7 +1,7 @@
 {
-  "name": "lotide",
+  "name": "@pratikbassi/lotide",
   "version": "1.0.0",
-  "description": "",
+  "description": "this is Pratik Bassi's practice npm publication",
   "main": "assertArraysEqual.js",
   "directories": {
     "test": "test"
@@ -19,7 +19,7 @@
     "type": "git",
     "url": "git+https://github.com/pratikbassi/lotide.git"
   },
-  "author": "",
+  "author": "pratikbassi",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/pratikbassi/lotide/issues"
