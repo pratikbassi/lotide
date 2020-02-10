@@ -1,4 +1,4 @@
-const findKey = function (object, callBack) {
+exports.findKey = function (object, callBack) {
   for(let item in object){
     if(callBack(object[item])){
       return item;

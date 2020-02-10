@@ -35,7 +35,7 @@ const assertArraysEqual = function (value1, value2) {
 };
 
 
-const flatten = function (input) {
+exports.flatten = function (input) {
   let i = 0;
   let returnArray = [];
 

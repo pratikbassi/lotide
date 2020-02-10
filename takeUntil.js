@@ -13,7 +13,7 @@ const takeUntil = function (array, callBack) {
 }
 
 
-
+module.exports = takeUntil;
 
 
 /// TESTING BELOW
