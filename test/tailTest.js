@@ -1,6 +1,11 @@
 const tail = require('../tail');
+const assertArraysEqual = require('../assertArraysEqual');
+const assert = require('chai').assert;
+
+describe('Should return the first item of every list', () => {
+  it('returns the last two items of the input list', () => {
+    assertArraysEqual(tail(["Yo Yo", "Lighthouse", "Labs"]), ["Lighthouse", "Labs"]);
+  }); 
+});
 
 
-const words = ["Yo Yo", "Lighthouse", "Labs"];
-tail(words); // no need to capture the return value since we are not checking it
-assertEqual(words.length, 3); // original array should still have 3 elements!
