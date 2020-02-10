@@ -4,8 +4,9 @@ const tail = function(inputArray) {
   let returnArray = [];
   let i = 1;
 
-  while (i < returnArray.length) {
+  while (i < inputArray.length) {
     returnArray.push(inputArray[i]);
+    i++;
   }
 
   return returnArray;
